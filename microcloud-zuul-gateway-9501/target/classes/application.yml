@@ -1,0 +1,54 @@
+server:
+  port: 9501
+
+spring:
+  application:
+    name: microcloud-zuul-gateway
+  zipkin:
+    base-url: http://localhost:8501 #所有数据提交到此服务中
+  sleuth:
+    sampler:
+      percentage: 1.0 #定义抽样比例 默认为0.1
+
+eureka:
+  instance:
+    #在信息列表中显示主机名称
+    instance-id: gateway-9501.com
+    #访问的路径变成ip地址
+    prefer-ip-address: true
+    #设置心跳监测默认是30s
+    lease-renewal-interval-in-seconds: 30
+    #距离上一次发生心跳之后等待下一次发送心跳的间隔时间，如果超过了此间隔时间，则认为改微服务已经宕机了，默认是90s。
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7004.com:7004/eureka/
+    register-with-eureka: true #注册到eureka 服务中，默认是true
+    fetch-registry: true #从注册中心拉取信息，默认是true 默认间隔时间是30s
+    healthcheck:
+      enabled: true
+zuul:
+  ignored-services: "*" #忽略使用应用名称进行直接访问
+  routes: #配置路由规则
+    microcloud-provider-product: product-proxy/**
+  host:
+    connect-timeout-millis: 3000
+#ribbon:
+  # 配置ribbon默认的超时时间
+  #ConnectTimeout: 2000  # 默认会读取classpath下的config.properties文件，application会覆盖config.properties中的属性
+  #ReadTimeout: 3000
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: zuul
+    password: zuul
+    role: USER
+  sessions: stateless  #session无状态
+
+info:
+  app.name: microcloud-provider
+  app.version: 1.0-SNAPSHOT
+  app.artifactId: microcloud-zuul-gateway-9501
+

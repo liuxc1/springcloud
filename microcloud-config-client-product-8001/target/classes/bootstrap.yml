@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: microloud-config-client-product
+  cloud:
+    config:
+      uri: http://config-7101.com:7101/
+      name: microloud-config-client-product
+      label: master
+      username: liuxc
+      password: liuxc

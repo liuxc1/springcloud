@@ -1,0 +1,24 @@
+server:
+  port: 7101
+
+spring:
+  application:
+    name: microcloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:liuxc1/microcloudconfig.git #设置GIT厂库的连接地址
+          search-paths: #采用单厂库多目录的方式获取配置文件信息
+            - microcloud-*
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/
+      defaultZone: http://eureka:eureka@eureka-7004.com:7004/eureka/
+  instance:
+    #在信息列表中显示主机名称
+    instance-id: www.lxc.com
+    #访问的路径变成ip地址
+    prefer-ip-address: true

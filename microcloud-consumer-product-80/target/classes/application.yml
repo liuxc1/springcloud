@@ -1,0 +1,19 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: microcloud-consumer-product-80
+
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/
+      defaultZone: http://eureka:eureka@eureka-7004.com:7004/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    #在信息列表中显示主机名称
+    instance-id: www.lxc.com
+    #访问的路径变成ip地址
+    prefer-ip-address: true

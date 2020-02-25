@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      name: microcloud-config-client #需要从config server 端 抓取配置的文件名称
+      profile: bate #定义使用配置文件里面的那个配置
+      label: master #定义git厂库分支
+      uri: http://config-7101.com:7101/ #config server 的访问连接
+      username: liuxc  #定义访问config server 的 认证
+      password: liuxc

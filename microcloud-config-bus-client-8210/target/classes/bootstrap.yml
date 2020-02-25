@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    config:
+      name: microcloud-config-bus-client #需要从config server 端 抓取配置的文件名称
+      profile: bate #定义使用配置文件里面的那个配置
+      label: master #定义git厂库分支
+      username: liuxc  #定义访问config server 的 认证
+      password: liuxc
+      discovery:  #通过eureka 服务id 找到config server
+        enabled: true
+        service-id: MICROCLOUD-CONFIG-BUS-SERVER
+  rabbitmq: #集成RabbitMQ作为消息服务总线处理
+    host: 192.168.20.85
+    port: 5672
+    virtual-host: /my-virtual-hosts
+    username: java
+    password: java
+
+eureka:
+  client: #目的是为了让客户端通过eureka找到SpringCloudConfig微服务
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7004.com:7004/eureka/

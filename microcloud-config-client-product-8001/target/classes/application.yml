@@ -1,0 +1,62 @@
+server:
+  port: 8001
+
+eureka:
+  instance:
+    #在信息列表中显示主机名称
+    instance-id: provider-8001.com
+    #访问的路径变成ip地址
+    prefer-ip-address: true
+    #设置心跳监测默认是30s
+    lease-renewal-interval-in-seconds: 30
+    #距离上一次发生心跳之后等待下一次发送心跳的间隔时间，如果超过了此间隔时间，则认为改微服务已经宕机了，默认是90s。
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      #defaultZone: http://eureka:eureka@eureka-7001.com:7001/eureka/,http://eureka:eureka@eureka-7002.com:7002/eureka/,http://eureka:eureka@eureka-7003.com:7003/eureka/
+      defaultZone: http://eureka:eureka@eureka-7004.com:7004/eureka/
+    register-with-eureka: true #注册到eureka 服务中，默认是true
+    fetch-registry: true #从注册中心拉取信息，默认是true 默认间隔时间是30s
+
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: liuxc
+#    password: liuxc
+#    role: USER
+#  sessions: stateless  #session无状态
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/**.xml
+  type-aliases-package: com.liuxc.www.microcloud.domain
+
+spring:
+  application:
+    name: microcloud-provider-product
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/liuxc?useUnicode=true&amp;characterEncoding=UTF-8&useSSL=false
+      username: liuxc
+      password: liuxc
+      min-idle: 5
+      initial-size: 5
+      max-active: 12
+      max-wait: 6000
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 6000
+      min-evictable-idle-time-millis: 100000
+      filters: stat,wall,log4j
+
+
+info:
+  app.name: microcloud-provider
+  app.version: 1.0-SNAPSHOT
+  app.artifactId: microcloud-config-client-product-8001

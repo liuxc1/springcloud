@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo" />
+        <module name="microcloud-api" />
+        <module name="microcloud-config-bus-client-8210" />
+        <module name="microcloud-config-bus-server-7201" />
+        <module name="microcloud-config-client-8210" />
+        <module name="microcloud-config-client-product-8001" />
+        <module name="microcloud-config-server-7101" />
+        <module name="microcloud-consumer-product-80" />
+        <module name="microcloud-consumer-product-feign" />
+        <module name="microcloud-consumer-product-hystrix" />
+        <module name="microcloud-eureka-7001" />
+        <module name="microcloud-eureka-7002" />
+        <module name="microcloud-eureka-7003" />
+        <module name="microcloud-eureka-7004" />
+        <module name="microcloud-provider-product-8001" />
+        <module name="microcloud-provider-product-8002" />
+        <module name="microcloud-provider-product-8003" />
+        <module name="microcloud-provider-product-hystrix-8004" />
+        <module name="microcloud-security" />
+        <module name="microcloud-sleuth-8501" />
+        <module name="microcloud-zuul-gateway-9501" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="microcolud-provider-product-8002" target="1.8" />
+      <module name="microcolud-provider-product-8003" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="" />
+    </option>
+  </component>
+</project>

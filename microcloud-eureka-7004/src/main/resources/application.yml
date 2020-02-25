@@ -1,0 +1,34 @@
+#tomcat信息配置
+server:
+  port: 7004
+
+#spring 信息配置
+spring:
+  application:
+    name: eureKa-server-7004
+  zipkin:
+    base-url: http://localhost:8501 #所有数据提交到此服务中
+  sleuth:
+    sampler:
+      percentage: 1.0 #定义抽样比例 默认为0.1
+#注册中心配置
+eureka:
+  instance:                           #eureka 实例
+    hostname: eureKa-7004.com         #eureka 主机名
+  client:                             #在默认设置下，Eureka服务注册中心也会将自己作为客户端来尝试注册它自己
+    register-with-eureka: false       #所以我们需要禁用它的客户端注册行为。
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka:eureka@eureka-7004.com:7004/eureka/
+  server:
+    eviction-interval-timer-in-ms: 30000 #设置清理的间隔时间，默认是60*1000； 60秒
+    enable-self-preservation: false #开发环境去掉自我保护
+#安全认证配置
+security:
+  basic:
+    #开启安全认证
+    enabled: true
+  user:
+    name: eureka
+    password: eureka
+    role: USER

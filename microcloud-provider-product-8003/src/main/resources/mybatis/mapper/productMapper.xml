@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuxc.www.microcloud.dao.IProductMapper">
+
+    <select id="getList" resultType="product">
+        SELECT * FROM T_PRODUCT
+    </select>
+
+    <select id="get" resultType="product">
+        SELECT * FROM T_PRODUCT WHERE ID=#{id}
+    </select>
+</mapper>
